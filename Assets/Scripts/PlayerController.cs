@@ -1,17 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] GameObject bombPrefab;
+    Rigidbody rb;
 
     [Header("Player")]
     [SerializeField] float moveSpeed;
     [SerializeField] float rotateSpeed;
     [SerializeField] int numMaxBombs;
     [SerializeField] int numSpawnedBombs;
-
-    Rigidbody rb;
+    List<GameObject> spawnedBombs = new List<GameObject>();
 
     void Start()
     {
@@ -29,7 +31,7 @@ public class PlayerController : MonoBehaviour
         Quaternion deltaRotation = Quaternion.Euler(angleForSpeed * rotateRate * Time.deltaTime);
         rb.MoveRotation(transform.rotation * deltaRotation);
 
-        if (Input.GetKeyDown(KeyCode.Space) && numMaxBombs >= numSpawnedBombs)
+        if (Input.GetKeyDown(KeyCode.Space) && numMaxBombs > numSpawnedBombs)
         {
             if (bombPrefab != null)
             {
@@ -37,9 +39,19 @@ public class PlayerController : MonoBehaviour
                 float y = bombPrefab.transform.localPosition.y;
                 float z = Mathf.RoundToInt(transform.localPosition.z);
                 Vector3 newBombPosition = new Vector3(x, y, z);
-                Instantiate(bombPrefab, newBombPosition, bombPrefab.transform.rotation);
+
+                GameObject newBomb = Instantiate(bombPrefab, newBombPosition, bombPrefab.transform.rotation);
                 numSpawnedBombs++;
+                spawnedBombs.Add(newBomb);
+                StartCoroutine(RemoveBomb(newBomb));
             }
         }
+    }
+
+    IEnumerator RemoveBomb(GameObject bomb)
+    {
+        yield return new WaitForSeconds(3f);
+        spawnedBombs.Remove(bomb);
+        numSpawnedBombs--;
     }
 }

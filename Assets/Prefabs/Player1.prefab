@@ -510,8 +510,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 3678431294765591660, guid: 0ad1d976ee5143d41ace0ffbaef3f001, type: 3}
-  moveSpeed: 10
-  rotateSpeed: 500
+  moveSpeed: 30
+  rotateSpeed: 2000
   numMaxBombs: 1
   numSpawnedBombs: 0
 --- !u!1 &7999233243482018375
