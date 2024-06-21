@@ -4,12 +4,14 @@ public class PlayerController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] GameObject bombPrefab;
-    Rigidbody rb;
 
     [Header("Player")]
     [SerializeField] float moveSpeed;
     [SerializeField] float rotateSpeed;
     [SerializeField] int numMaxBombs;
+    [SerializeField] int numSpawnedBombs;
+
+    Rigidbody rb;
 
     void Start()
     {
@@ -27,21 +29,17 @@ public class PlayerController : MonoBehaviour
         Quaternion deltaRotation = Quaternion.Euler(angleForSpeed * rotateRate * Time.deltaTime);
         rb.MoveRotation(transform.rotation * deltaRotation);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && numMaxBombs >= numSpawnedBombs)
         {
-            SpawnBomb();
-        }
-    }
-
-    void SpawnBomb()
-    {
-        if (bombPrefab != null)
-        {
-            float x = Mathf.RoundToInt(transform.localPosition.x);
-            float y = bombPrefab.transform.localPosition.y;
-            float z = Mathf.RoundToInt(transform.localPosition.z);
-            Vector3 newBombPosition = new Vector3(x, y, z);
-            Instantiate(bombPrefab, newBombPosition, bombPrefab.transform.rotation);
+            if (bombPrefab != null)
+            {
+                float x = Mathf.RoundToInt(transform.localPosition.x);
+                float y = bombPrefab.transform.localPosition.y;
+                float z = Mathf.RoundToInt(transform.localPosition.z);
+                Vector3 newBombPosition = new Vector3(x, y, z);
+                Instantiate(bombPrefab, newBombPosition, bombPrefab.transform.rotation);
+                numSpawnedBombs++;
+            }
         }
     }
 }
