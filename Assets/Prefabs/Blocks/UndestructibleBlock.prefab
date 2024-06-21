@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3480084287981474461}
   - component: {fileID: 6532828871623511328}
   - component: {fileID: 7124352212235777899}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: UndestructibleBlock
   m_TagString: Undestructible
   m_Icon: {fileID: 0}

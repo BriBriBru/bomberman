@@ -231,9 +231,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 177540, guid: 951ab6964ab7aee46b83c7372a879f23, type: 3}
+  blockLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
   timeToDetonate: 3
   bombLifeTime: 0.3
   explosionDuration: 1.5
+  explosionRange: 3
 --- !u!1 &5911052175792580302
 GameObject:
   m_ObjectHideFlags: 0
