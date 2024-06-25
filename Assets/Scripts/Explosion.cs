@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    [SerializeField] float explosionDuration = 2f;
-
     void Start()
     {
+        ParticleSystem explosionParticles = GetComponentInChildren<ParticleSystem>();
+        float explosionDuration = explosionParticles.main.duration;
+
         Destroy(gameObject, explosionDuration);
     }
 
