@@ -509,6 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19cf42eb1df71614c9ee81c600def712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 1
   bombPrefab: {fileID: 3678431294765591660, guid: 0ad1d976ee5143d41ace0ffbaef3f001, type: 3}
   moveSpeed: 30
   rotateSpeed: 2000

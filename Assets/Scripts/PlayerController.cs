@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("ID")]
+    public int id;
+
     [Header("References")]
     [SerializeField] GameObject bombPrefab;
     Rigidbody rb;
@@ -18,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        GameManager.Instance.remainingPlayers.Add(id);
     }
 
     void Update()
