@@ -45,6 +45,11 @@ public class Bomb : MonoBehaviour
             {
                 Instantiate(explosionPrefab, transform.position + (i * direction), explosionPrefab.transform.rotation);
             }
+            else if (hit.collider.CompareTag("Destructible"))
+            {
+                DestructibleBlock destructibleBlock = hit.collider.gameObject.GetComponent<DestructibleBlock>();
+                destructibleBlock.DestroyBlock();
+            }
             else
             {
                 break;
