@@ -9,6 +9,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/mlagents-venv/
+/Assets/ML-Agents/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
